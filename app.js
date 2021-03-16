@@ -1,30 +1,14 @@
-// function sayHello(name) {
-//     console.log("Hello "+ name) //global scope
-// }
-// //sayHello("Modest");
-// console.log(window);
+const path = require('path');
+var pathObj = path.parse(__filename);
+//console.log(pathObj);
 
-// console.log(); //global
+const OS = require('os');
+// console.log(OS.freemem());
+// console.log(OS.totalmem());
 
-// setTimeout();
-// clearTimeout();
+/// Template string
+// ES6 / ES2015 : ECMAScript 6
 
-// setInterval();
-// clearInterval();
-// // all global
-// window.console.log();
-// window.setInterval();
 
-// var message = '';
-// console.log(globalThis.message); //undefined
-
-// function sayHello(name) {
-//     console.log(name);
-// }
-// window.sayHello("Modest");
-
-const log = require('./logger') //better to const to avoid overloading
-//logger = 1;
-//console.log(log);
-//logger.log('message');
-log('message');
+console.log(`Total memory: ${OS.totalmem()}`);
+console.log(`Free memory: ${OS.freemem()}`);
