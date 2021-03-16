@@ -1,15 +1,9 @@
-//(function (exports,require, module, __filename, __dirname) { //module wrapper function
-    console.log(__filename);
-    console.log(__dirname);
-
-    var url = 'http/mylogger.io/log';
-    function log(message) {
+const EventEmitter = require("events");
+class Logger extends EventEmitter {
+     log(message) { //method without function keyword
         //Send an HTTP request
         console.log(message);
+        this.emit('logger', message);
     }
-    
-    module.exports = log;
-    //module.exports = log;
-    //module.exports.endPoint = url;
-    //exports.log = log;
-//})
+}
+    module.exports = Logger;
