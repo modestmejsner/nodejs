@@ -1,8 +1,18 @@
-const fs = require("fs");
-// const files = fs.readdirSync('./'); //synchorniczne / blocking
-// console.log(files);
+const EventEmitter = require('events');
+const emitter = new EventEmitter();
+//Register a listener
+emitter.on('messageLogged', function() {
+    console.log("Listener called");
+})
 
-fs.readdir('./', function(err, files) { //async non-blocking - better choice ALLWAYS
-    if (err) console.log('Error', err);
-    else console.log('Result',files);
-} );
+emitter.on("water", function(arg) {
+    arg.forEach(element => {
+        console.log(element);
+        console.log(' ');
+    });
+})
+//Raise an event
+//emitter.emit('messageLogged'); // emit emitować, Making a noise, produce - signalling
+//But where is listener
+
+emitter.emit('water',[1,2,3,4]);
