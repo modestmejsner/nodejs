@@ -1,14 +1,8 @@
-const path = require('path');
-var pathObj = path.parse(__filename);
-//console.log(pathObj);
+const fs = require("fs");
+// const files = fs.readdirSync('./'); //synchorniczne / blocking
+// console.log(files);
 
-const OS = require('os');
-// console.log(OS.freemem());
-// console.log(OS.totalmem());
-
-/// Template string
-// ES6 / ES2015 : ECMAScript 6
-
-
-console.log(`Total memory: ${OS.totalmem()}`);
-console.log(`Free memory: ${OS.freemem()}`);
+fs.readdir('./', function(err, files) { //async non-blocking - better choice ALLWAYS
+    if (err) console.log('Error', err);
+    else console.log('Result',files);
+} );
